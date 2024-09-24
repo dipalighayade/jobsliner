@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jobsliner/companyReviewHome.dart';
+import 'package:jobsliner/cmp_notification.dart';
+
 
 
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         // colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
-      home:  const Companyreviewhome(),
+      home:  const cmp_notification(),
     );
   }
 }
