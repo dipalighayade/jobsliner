@@ -6,16 +6,19 @@ class Community extends StatefulWidget {
   const Community({super.key});
 
   @override
+
+
+
   State<Community> createState() => _CommunityState();
 }
 
 class _CommunityState extends State<Community> {
   List<String> buttonlist = ["UI Design", "UX Design", "Animation", "Graphics"];
   String selectButton = '';
-  List<bool> isFavorited = [false, false,false, false, false];
-  //List<bool> isFavorited1 = [];
-  List<bool> isExpandedList = [false, false,false, false, false];
- // List<bool> isExpandedList1 = [];
+  List<bool> isFavorited = [false, false, false, false, false];
+  List<bool> isExpandedList = [false, false, false, false, false];
+
+
   final List<Map<String, dynamic>> companyList = [
     {
       'que': 'Why to use this tool for design ?',
@@ -33,6 +36,26 @@ class _CommunityState extends State<Community> {
       'que': 'Why to use this tool for developing ?',
     },
   ];
+
+   List<ExpansionTileController> _controllers =[];
+
+  void _collapseOtherTiles(int expandedIndex){
+    for(int i=0;i<_controllers.length;i++){
+      if(i!=expandedIndex){
+
+        _controllers[i].collapse();
+      }
+    }
+  }
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _controllers=List.generate(companyList.length, (_)=>ExpansionTileController());
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,7 +119,7 @@ class _CommunityState extends State<Community> {
                         fontSize: 11,
                         fontWeight: FontWeight.w300,
                         color: const Color.fromRGBO(88, 88, 88, 1),
-                      ), //background: rgba(88, 88, 88, 1);search bar
+                      ), //search bar
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(31),
                           borderSide: const BorderSide(
@@ -106,15 +129,12 @@ class _CommunityState extends State<Community> {
                       iconColor: const Color.fromRGBO(163, 163, 163, 1),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(31)),
-                      //border: 0.5px solid rgba(188, 188, 188, 1)
-                      fillColor: const Color(
-                          0xB1F5F5F5), //background: rgba(245, 245, 245, 0.7);
+                      fillColor: const Color(0xB1F5F5F5),
                       filled: true,
                     ),
                   ),
                 ),
                 const SizedBox(height: 25),
-                //if (selectButton.isNotEmpty)
                 Row(
                   children: [
                     Text(
@@ -138,14 +158,14 @@ class _CommunityState extends State<Community> {
                 const SizedBox(height: 8),
                 SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  height: 100, // Add a fixed height to the Container
+                  height: 100,
                   child: GridView.builder(
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3, // Only one item per row
+                      crossAxisCount: 3,
                       childAspectRatio: 2.4,
                       crossAxisSpacing: 0,
-                      mainAxisSpacing: 1.0, // Space between items horizontally
+                      mainAxisSpacing: 1.0,
                     ),
                     scrollDirection: Axis.vertical,
                     itemCount: buttonlist.length,
@@ -168,11 +188,10 @@ class _CommunityState extends State<Community> {
                                       Color.fromRGBO(30, 227, 255, 1),
                                     ],
                                   )
-                                : null, // No gradient if not selecte
+                                : null,
                             borderRadius: BorderRadius.circular(22),
                           ),
-                          margin: const EdgeInsets.symmetric(
-                              horizontal: 8), // Add margin between buttons
+                          margin: const EdgeInsets.symmetric(horizontal: 8),
                           child: InkWell(
                             onTap: () {
                               setState(() {
@@ -213,11 +232,11 @@ class _CommunityState extends State<Community> {
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 12.0),
                           child: ExpansionTile(
+                            
                             tilePadding: EdgeInsets.zero,
                             title: Center(
                               child: Text(
-                                community['que'] ??
-                                    'Question not available', // Added null check
+                                community['que'] ?? 'Question not available',
                                 style: GoogleFonts.poppins(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
@@ -233,10 +252,16 @@ class _CommunityState extends State<Community> {
                                   ? Icons.keyboard_arrow_down
                                   : Icons.arrow_forward_ios,
                             ),
+                            controller: _controllers[index],
                             onExpansionChanged: (bool expanded) {
                               setState(() {
+                                
+                                if(expanded){
+                                  _collapseOtherTiles(index);
+                                }
                                 isExpandedList[index] = expanded;
-                              });
+                              }
+                              );
                             },
                             children: [
                               const Divider(
@@ -326,8 +351,7 @@ class _CommunityState extends State<Community> {
                     );
                   },
                 ),
-
-                ],
+              ],
             ),
           ),
         ));

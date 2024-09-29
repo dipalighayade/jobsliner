@@ -40,6 +40,7 @@ dependencies:
   line_awesome_flutter: ^3.0.1
   svg_icon: ^0.0.1
   flutter_svg: ^0.22.0
+  pie_chart: ^5.4.0
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +67,12 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/img/
+    - assets/img/calender.svg
+    - assets/img/clock.svg
+    - assets/img/email.svg
+    - assets/img/location.svg
+    - assets/img/phone.svg
+    - assets/img/share.svg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
