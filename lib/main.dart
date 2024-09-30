@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:jobsliner/events/List_Event_Info.dart';
 import 'package:jobsliner/events/approval.dart';
 import 'package:jobsliner/events/eve_Home.dart';
+import 'package:jobsliner/events/list_tech_eve.dart';
+import 'package:jobsliner/events/viewinfo.dart';
 
 
 
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
         // colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
-      home:  const Approval(),
+      home:  const Viewinfo(),
     );
   }
 }

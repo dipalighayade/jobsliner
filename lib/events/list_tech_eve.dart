@@ -14,26 +14,41 @@ class _ListTechEveState extends State<ListTechEve> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          leadingWidth: 75,
-          leading: const Icon(Icons.arrow_back),
-          toolbarHeight: 67,
-          titleSpacing: -15,
-          title: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5),
-            child: Text(
-              'List of Tech Events',
-              style: GoogleFonts.poppins(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(70),
+          child: Container(
+            decoration: const BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Color.fromRGBO(0, 0, 0, 0.09),
+                  offset: Offset(0, 4),
+                  blurRadius: 10,
+                  spreadRadius: 0,
+                ),
+              ],
+            ),
+            child: AppBar(
+              leadingWidth: 75,
+              leading: const Icon(Icons.arrow_back),
+              toolbarHeight: 67,
+              titleSpacing: -15,
+              title: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: Text(
+                  'List your Event Info',
+                  style: GoogleFonts.poppins(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
               ),
+              backgroundColor: Colors.white,
+              surfaceTintColor: Colors.transparent,
+              shadowColor: const Color.fromRGBO(0, 0, 0, 1),
+              scrolledUnderElevation: 1,
+              elevation: 0,
             ),
           ),
-          backgroundColor: Colors.white,
-          surfaceTintColor: Colors.transparent,
-          shadowColor: const Color.fromRGBO(0, 0, 0, 0.1),
-          elevation: 50,
-          scrolledUnderElevation: 0,
         ),
         body: Padding(
           padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
@@ -70,17 +85,18 @@ class _ListTechEveState extends State<ListTechEve> {
                   height: 1500,
                   width: 500,
                   child: GridView.builder(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 15,
-                      childAspectRatio: 0.597 , // Adjust this to make cards taller
+                      childAspectRatio:
+                          0.597, // Adjust this to make cards taller
                     ),
                     itemCount: 8,
                     itemBuilder: (context, index) {
                       return const MeetupCard(
-                        imageUrl:
-                            'assets/img/event.png', 
+                        imageUrl: 'assets/img/event.png',
                         title: 'Design Meet-up',
                         date: 'Date : 20/08/24',
                         location: 'Chitnavis Center, Nagpur',
@@ -105,7 +121,8 @@ class MeetupCard extends StatelessWidget {
   final String location;
   final String time;
 
-  const MeetupCard({super.key, 
+  const MeetupCard({
+    super.key,
     required this.imageUrl,
     required this.title,
     required this.date,
@@ -126,22 +143,20 @@ class MeetupCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
             boxShadow: const [
               BoxShadow(
-                color:  Color.fromRGBO(28, 108, 255, 0.13), 
+                color: Color.fromRGBO(28, 108, 255, 0.13),
                 //
-                offset: Offset(0, 4), 
-                blurRadius: 10, 
-                spreadRadius: 0, 
+                offset: Offset(0, 4),
+                blurRadius: 10,
+                spreadRadius: 0,
               ),
             ],
           ),
-          padding: const EdgeInsets.all(
-              1), 
+          padding: const EdgeInsets.all(1),
         ),
         // Inner content layer
         Positioned.fill(
           child: Container(
-            margin: const EdgeInsets.all(
-                1), 
+            margin: const EdgeInsets.all(1),
             decoration: BoxDecoration(
               color: Colors.white, // Background color of the inner content
               borderRadius: BorderRadius.circular(16),
@@ -156,8 +171,8 @@ class MeetupCard extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: const BorderRadius.all(Radius.circular(10)),
                       child: Image.asset(
-                        imageUrl, 
-                        height: 150, 
+                        imageUrl,
+                        height: 150,
                         width: double.infinity,
                         fit: BoxFit.cover,
                       ),
@@ -181,32 +196,18 @@ class MeetupCard extends StatelessWidget {
                         const SizedBox(height: 8),
                         Row(
                           children: [
-                             SvgPicture.asset(
-                                          'assets/img/calender.svg',height: 10,color: Colors.blue,),
+                            SvgPicture.asset(
+                              'assets/img/calender.svg',
+                              height: 10,
+                              color: Colors.blue,
+                            ),
                             const SizedBox(width: 4),
                             Text(
                               date,
                               style: GoogleFonts.poppins(
-                                fontSize: 6,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xff676767)
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 4),
-                        Row(
-                          children: [
-                           SvgPicture.asset(
-                                          'assets/img/location.svg',height: 10,color: Colors.blue,),
-                            const SizedBox(width: 4),
-                            Text(
-                              location,
-                              style: GoogleFonts.poppins(
-                                fontSize: 6,
-                                fontWeight: FontWeight.w400,
-                                color:const Color(0xff676767)
-                              ),
+                                  fontSize: 6,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xff676767)),
                             ),
                           ],
                         ),
@@ -214,15 +215,35 @@ class MeetupCard extends StatelessWidget {
                         Row(
                           children: [
                             SvgPicture.asset(
-                                          'assets/img/clock.svg',height: 10,color: Colors.blue,),
+                              'assets/img/location.svg',
+                              height: 10,
+                              color: Colors.blue,
+                            ),
+                            const SizedBox(width: 4),
+                            Text(
+                              location,
+                              style: GoogleFonts.poppins(
+                                  fontSize: 6,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xff676767)),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 4),
+                        Row(
+                          children: [
+                            SvgPicture.asset(
+                              'assets/img/clock.svg',
+                              height: 10,
+                              color: Colors.blue,
+                            ),
                             const SizedBox(width: 4),
                             Text(
                               time,
                               style: GoogleFonts.poppins(
-                                fontSize: 6,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xff676767)
-                              ),
+                                  fontSize: 6,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xff676767)),
                             ),
                           ],
                         ),

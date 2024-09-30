@@ -61,7 +61,7 @@ class _ListEventInfoState extends State<ListEventInfo> {
           ),
         ),
         body: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+          padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 20),
           child: Column(
             children: [
               Center(
@@ -71,10 +71,10 @@ class _ListEventInfoState extends State<ListEventInfo> {
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                   ),
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.left,
                 ),
               ),
-              const SizedBox(height: 15),
+              const SizedBox(height: 10),
               _customTextField(name, 'Event Name'),
               _customTextField(contactno, 'Contact Number'),
               _customTextField(email, 'Email Address'),
