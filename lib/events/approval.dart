@@ -29,7 +29,7 @@ class _ApprovalState extends State<Approval> {
           child: AppBar(
             leadingWidth: 75,
             leading: const Icon(Icons.arrow_back),
-            toolbarHeight: 70,
+            toolbarHeight: 67,
             titleSpacing: -15,
             title: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5),

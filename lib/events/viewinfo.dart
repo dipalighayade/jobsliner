@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,7 +18,7 @@ class _ViewinfoState extends State<Viewinfo> {
         appBar: AppBar(
           leadingWidth: 75,
           leading: const Icon(Icons.arrow_back),
-          toolbarHeight: 70,
+          toolbarHeight: 67,
           titleSpacing: -15,
           title: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -34,29 +35,32 @@ class _ViewinfoState extends State<Viewinfo> {
           shadowColor: const Color.fromRGBO(0, 0, 0, 0),
           scrolledUnderElevation: 0,
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildEventImage(),
-              Padding(
-                padding: const EdgeInsets.only(top: 5, right: 20, left: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 10),
-                    _buildEventTitle('Dev-ops Meet-up'),
-                    const SizedBox(height: 10),
-                    _buildEventDetails(),
-                    const SizedBox(height: 25),
-                    _buildEventDescription(),
-                    const SizedBox(height: 13),
-                    _buildButton('More Info')
-                  ],
-                ),
-              )
-            ],
-          ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildEventImage(),
+            Padding(
+              padding: const EdgeInsets.only(top: 5, right: 20, left: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 10),
+                  _buildEventTitle('Dev-ops Meet-up'),
+                  const SizedBox(height: 10),
+                  _buildEventDetails(),
+                  const SizedBox(height: 25),
+                  SizedBox(
+                    height: 250, 
+                    child: SingleChildScrollView(
+                      child: _buildEventDescription(),
+                    ),
+                  ),
+                  const SizedBox(height: 13),
+                  _buildButton('More Info'),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -152,25 +156,28 @@ class _ViewinfoState extends State<Viewinfo> {
   }
 
   Widget _buildDetailRow(String iconPath, String text) {
-    return Row(
-      children: [
-        SvgPicture.asset(
-          iconPath,
-          width: 12,
-          height: 12,
-          color: Colors.blue,
-        ),
-        const SizedBox(width: 8),
-        Text(
-          text,
-          style: GoogleFonts.poppins(
-            fontSize: 12,
-            fontWeight: FontWeight.w400,
-            color: const Color(0xff616161),
-            wordSpacing: -1.9,
+    return Padding(
+      padding: const EdgeInsets.only(left: 20,bottom: 1.5),
+      child: Row(
+        children: [
+          SvgPicture.asset(
+            iconPath,
+            width: 12,
+            height: 12,
+            color: Colors.blue,
           ),
-        ),
-      ],
+          const SizedBox(width: 8),
+          Text(
+            text,
+            style: GoogleFonts.poppins(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: const Color(0xff616161),
+              wordSpacing: -1.9,
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -190,6 +197,10 @@ class _ViewinfoState extends State<Viewinfo> {
             ),
           ),
           const SizedBox(height: 8),
+          _buildBulletPoint(
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labor.'),
+          _buildBulletPoint(
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labor.'),
           _buildBulletPoint(
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labor.'),
           _buildBulletPoint(

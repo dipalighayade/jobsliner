@@ -17,7 +17,7 @@ class _ListTechEveState extends State<ListTechEve> {
         appBar: AppBar(
           leadingWidth: 75,
           leading: const Icon(Icons.arrow_back),
-          toolbarHeight: 70,
+          toolbarHeight: 67,
           titleSpacing: -15,
           title: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -74,7 +74,7 @@ class _ListTechEveState extends State<ListTechEve> {
                       crossAxisCount: 2,
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 15,
-                      childAspectRatio: 0.597, // Adjust this to make cards taller
+                      childAspectRatio: 0.597 , // Adjust this to make cards taller
                     ),
                     itemCount: 8,
                     itemBuilder: (context, index) {
@@ -156,8 +156,8 @@ class MeetupCard extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: const BorderRadius.all(Radius.circular(10)),
                       child: Image.asset(
-                        imageUrl, // Use Image.asset for local assets
-                        height: 150, // Adjust image height
+                        imageUrl, 
+                        height: 150, 
                         width: double.infinity,
                         fit: BoxFit.cover,
                       ),
@@ -233,7 +233,7 @@ class MeetupCard extends StatelessWidget {
                             alignment: Alignment.bottomRight,
                             child: Container(
                               height: 20,
-                              width: 70,
+                              width: 65,
                               decoration: BoxDecoration(
                                 color: const Color(0xffecf3ff),
                                 border: Border.all(
